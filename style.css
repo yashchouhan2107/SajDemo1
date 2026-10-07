@@ -1,0 +1,194 @@
+/* Custom Luxury Aesthetics & Text Revealing Effects for Saj */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #FAF7F2;
+  --bg-secondary: #F3ECE1;
+  --bg-card: #FFFFFF;
+  --text-dark: #2A1D15;
+  --text-muted: #6B5B52;
+  --accent-brown: #966840;
+  --accent-brown-light: #C68B59;
+  --accent-gold: #C5A059;
+  --accent-cream: #EFE7DA;
+  --border-light: #E6DCCF;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ==================== 1. SCROLL REVEAL ANIMATIONS ==================== */
+
+.reveal-text-content {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: textRevealSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-4 { animation-delay: 0.3s; }
+
+@keyframes textRevealSlideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(45px) scale(0.98);
+  filter: blur(6px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.reveal-luxury-gold {
+  color: #966840;
+  text-shadow: 0 2px 12px rgba(150, 104, 64, 0.18);
+  display: block;
+  opacity: 0;
+  transform: translateY(22px);
+  animation: luxuryGoldEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+@keyframes luxuryGoldEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    letter-spacing: 0em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ==================== 2. INFINITE MARQUEE BANNER ==================== */
+
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  animation: scrollMarquee 28s linear infinite;
+}
+
+.marquee-track:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-100%); }
+}
+
+/* ==================== 3. LUXURY HOVER & MICRO-INTERACTIONS ==================== */
+
+.nav-link-luxe {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link-luxe::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #966840, #C5A059);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+}
+
+.nav-link-luxe:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.luxe-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 35px -10px rgba(150, 104, 64, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxe-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.luxe-card:hover::before {
+  left: 130%;
+}
+
+.luxe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -10px rgba(150, 104, 64, 0.18);
+  border-color: var(--accent-brown-light);
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, #F3ECE1 0%, #E8DEC8 100%);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-brown);
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CBBA;
+  border-radius: 4px;
+}

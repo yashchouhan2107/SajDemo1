@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saj — Pure Organic Dry Fruits & Superfoods</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  
+  <!-- Embedded Luxury Stylesheet -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg-primary: #FAF7F2;
+      --bg-secondary: #F3ECE1;
+      --bg-card: #FFFFFF;
+      --text-dark: #2A1D15;
+      --text-muted: #6B5B52;
+      --accent-brown: #966840;
+      --accent-brown-light: #C68B59;
+      --accent-gold: #C5A059;
+      --accent-cream: #EFE7DA;
+      --border-light: #E6DCCF;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* Hero Text Fade Up Reveal */
+    .reveal-text-content {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: textRevealSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-4 { animation-delay: 0.3s; }
+
+    @keyframes textRevealSlideUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Scroll-triggered Section & Element Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(45px) scale(0.98);
+      filter: blur(6px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Steady, Solid Luxury Gold Headline with Smooth Entrance Reveal */
+    .reveal-luxury-gold {
+      color: #966840;
+      text-shadow: 0 2px 12px rgba(150, 104, 64, 0.18);
+      display: block;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: luxuryGoldEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+    }
+
+    @keyframes luxuryGoldEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+        letter-spacing: 0em;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.02em;
+      }
+    }
+
+    /* Infinite Marquee Track */
+    .marquee-track {
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .marquee-content {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-around;
+      min-width: 100%;
+      animation: scrollMarquee 28s linear infinite;
+    }
+
+    .marquee-track:hover .marquee-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollMarquee {
+      from { transform: translateX(0%); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* Nav Link Golden Underline Reveal */
+    .nav-link-luxe {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link-luxe::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #966840, #C5A059);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 2px;
+    }
+
+    .nav-link-luxe:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Glassmorphism Cards with Light Brown Glow */
+    .luxe-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 10px 35px -10px rgba(150, 104, 64, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .luxe-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.75s ease;
+    }
+
+    .luxe-card:hover::before {
+      left: 130%;
+    }
+
+    .luxe-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -10px rgba(150, 104, 64, 0.18);
+      border-color: var(--accent-brown-light);
+    }
+
+    /* Gold Badge Shimmer */
+    .gold-badge {
+      background: linear-gradient(135deg, #F3ECE1 0%, #E8DEC8 100%);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-brown);
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-float {
+      animation: floatSlow 5s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8CBBA;
+      border-radius: 4px;
+    }
+  </style>
+
+  <!-- External style.css link as backup -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#FAF7F2] text-[#2A1D15] antialiased selection:bg-[#C68B59] selection:text-white">
+
+  <!-- ==================== HEADER NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E6DCCF]">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#966840] to-[#C68B59] flex items-center justify-center text-white font-serif-luxury text-xl font-bold shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <div>
+          <span class="font-serif-luxury text-2xl font-bold tracking-wide text-[#2A1D15] group-hover:text-[#966840] transition">Saj</span>
+          <span class="block text-[10px] tracking-widest uppercase text-[#966840] font-semibold -mt-1">Organic Dry Fruits</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#5C4A3E]">
+        <a href="#collection" class="nav-link-luxe hover:text-[#966840] transition-colors py-1">Reserve Collection</a>
+        <a href="#manifesto" class="nav-link-luxe hover:text-[#966840] transition-colors py-1">Our Sourcing</a>
+        <a href="#giftbox" class="nav-link-luxe hover:text-[#966840] transition-colors py-1">Custom Gift Box</a>
+        <a href="#purity" class="nav-link-luxe hover:text-[#966840] transition-colors py-1">Purity Standard</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="flex items-center space-x-3 sm:space-x-5">
+        <button id="cartBtn" class="relative p-2 rounded-full hover:bg-[#F3ECE1] text-[#2A1D15] transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span id="cartBadge" class="absolute -top-1 -right-1 bg-[#966840] text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <a href="#collection" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-[#966840] text-white text-xs font-semibold tracking-wider uppercase hover:bg-[#7A5230] shadow-md hover:shadow-lg transition-all">
+          Explore Harvest
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl border border-[#E6DCCF] hover:bg-[#F3ECE1] text-[#2A1D15] transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Menu Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-[#E6DCCF] bg-[#FAF7F2] px-6 py-4 space-y-3">
+      <a href="#collection" onclick="toggleMobileMenu(false)" class="block py-2 text-base font-semibold text-[#2A1D15] hover:text-[#966840]">Reserve Collection</a>
+      <a href="#manifesto" onclick="toggleMobileMenu(false)" class="block py-2 text-base font-semibold text-[#2A1D15] hover:text-[#966840]">Our Sourcing</a>
+      <a href="#giftbox" onclick="toggleMobileMenu(false)" class="block py-2 text-base font-semibold text-[#2A1D15] hover:text-[#966840]">Custom Gift Box</a>
+      <a href="#purity" onclick="toggleMobileMenu(false)" class="block py-2 text-base font-semibold text-[#2A1D15] hover:text-[#966840]">Purity Standard</a>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 px-6 bg-gradient-to-b from-[#FAF7F2] via-[#F5ECE1] to-[#FAF7F2]">
+    
+    <!-- Decorative background elements -->
+    <div class="absolute top-12 left-12 w-72 h-72 rounded-full bg-[#EFE7DA]/50 blur-3xl -z-10"></div>
+    <div class="absolute bottom-12 right-12 w-96 h-96 rounded-full bg-[#E8DEC8]/40 blur-3xl -z-10"></div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Hero Left: Animated Revealing Text -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full gold-badge text-xs font-semibold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-[#966840] animate-pulse"></span>
+          <span>100% Certified Organic • Harvest 2026</span>
+        </div>
+
+        <!-- Headline with Always-Visible Uncompromised Luxury -->
+        <h1 class="font-serif-luxury text-4xl sm:text-6xl lg:text-7xl font-normal leading-[1.15] text-[#2A1D15]">
+          <span class="reveal-text-content delay-1">Handpicked.</span>
+          <span class="reveal-text-content delay-2 italic font-serif-luxury text-[#966840]">Pure.</span>
+          <span class="reveal-luxury-gold font-semibold my-1">Uncompromised Luxury</span>
+          <span class="block reveal-text-content delay-4 text-3xl sm:text-5xl lg:text-6xl text-[#5C4A3E]">Organic Dry Fruits.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-[#6B5B52] max-w-xl leading-relaxed reveal-on-scroll">
+          Experience nature’s pristine adornment. Saj brings you single-origin Mamra Almonds, sun-dried Medjool Dates, Iranian Pistachios, and Kashmiri Walnuts, curated with zero preservatives.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="pt-4 flex flex-wrap gap-4 items-center reveal-on-scroll">
+          <a href="#collection" class="px-8 py-4 rounded-full bg-[#2A1D15] text-white font-semibold text-sm tracking-wide hover:bg-[#966840] shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-3">
+            <span>Explore Reserve Collection</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+
+          <a href="#giftbox" class="px-7 py-4 rounded-full border border-[#966840] text-[#966840] font-semibold text-sm hover:bg-[#966840] hover:text-white transition-all duration-300">
+            Build Custom Gift Box
+          </a>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-[#E6DCCF] text-center sm:text-left">
+          <div>
+            <span class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">100%</span>
+            <span class="block text-xs text-[#6B5B52]">Solar Sun-Dried</span>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">Zero</span>
+            <span class="block text-xs text-[#6B5B52]">Chemical Preservatives</span>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">Direct</span>
+            <span class="block text-xs text-[#6B5B52]">High-Altitude Farms</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hero Right: Interactive 3D Product Showcase Card -->
+      <div class="lg:col-span-5 relative">
+        <div class="luxe-card p-4 sm:p-6 rounded-3xl relative overflow-hidden">
+          
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#F4EFEA]">
+            <img src="assets/almonds.jpg" alt="Saj Organic Mamra Almonds" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4 gold-badge px-3 py-1 rounded-full text-[11px] font-bold">
+              Signature Selection
+            </div>
+          </div>
+
+          <div class="mt-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">Royal Organic Mamra Almonds</h3>
+              <span class="text-xl font-bold text-[#966840]">₹2,850</span>
+            </div>
+            <p class="text-xs text-[#6B5B52]">Single-Origin High-Altitude Harvest • Rich in Natural Oils & Vitamin E</p>
+            
+            <div class="pt-3 flex items-center justify-between">
+              <span class="text-xs font-semibold text-[#8C7769]">Net Wt: 450g Glass Jar</span>
+              <button onclick="addToCart('Royal Organic Mamra Almonds', 2850, 'assets/almonds.jpg')" class="px-5 py-2 rounded-full bg-[#966840] text-white text-xs font-bold hover:bg-[#2A1D15] transition">
+                + Add To Bag
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Floating Badge -->
+        <div class="absolute -bottom-6 -left-6 bg-white border border-[#E6DCCF] p-4 rounded-2xl shadow-xl flex items-center space-x-3 max-w-xs animate-float">
+          <div class="w-10 h-10 rounded-full bg-[#F3ECE1] flex items-center justify-center text-[#966840]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-[#2A1D15]">Eco-Luxe Packaging</h4>
+            <p class="text-[11px] text-[#6B5B52]">Biodegradable glass & FSC light oak seals.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INFINITE LUXURY MARQUEE BANNER ==================== -->
+  <section class="py-4 bg-[#2A1D15] text-[#EFE7DA] overflow-hidden border-y border-[#C5A059]/40 relative">
+    <div class="marquee-track flex whitespace-nowrap">
+      <div class="marquee-content flex items-center space-x-10 text-xs sm:text-sm font-semibold tracking-widest uppercase font-serif-luxury">
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>100% Certified Organic</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Single-Origin Mamra Almonds</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Solar Sun-Dried Harvest</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Zero Chemical Preservatives</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Wild Iranian Pistachios</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Eco-Luxe Light Oak Packaging</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Handpicked Harvest 2026</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Direct High-Altitude Farms</span></span>
+      </div>
+      <!-- Duplicate content for seamless infinite loop -->
+      <div class="marquee-content flex items-center space-x-10 text-xs sm:text-sm font-semibold tracking-widest uppercase font-serif-luxury" aria-hidden="true">
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>100% Certified Organic</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Single-Origin Mamra Almonds</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Solar Sun-Dried Harvest</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Zero Chemical Preservatives</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Wild Iranian Pistachios</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Eco-Luxe Light Oak Packaging</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Handpicked Harvest 2026</span></span>
+        <span class="flex items-center space-x-3"><span class="text-[#C5A059]">✦</span><span>Direct High-Altitude Farms</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BRAND MANIFESTO (SCROLL REVEAL) ==================== -->
+  <section id="manifesto" class="py-24 px-6 bg-white border-b border-[#E6DCCF] reveal-on-scroll">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
+      
+      <span class="text-xs font-bold tracking-widest uppercase text-[#966840]">The Saj Promise</span>
+
+      <h2 class="font-serif-luxury text-3xl sm:text-5xl leading-tight text-[#2A1D15]">
+        "We believe organic dry fruits are nature’s purest adornments. Every nut, date, and seed at <span class="text-[#966840] italic font-serif-luxury">Saj</span> is hand-harvested from high-altitude solar orchards, sun-cured with patience, and packed raw to preserve its living vitality."
+      </h2>
+
+      <div class="pt-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E6DCCF] reveal-on-scroll">
+          <div class="w-8 h-8 rounded-full bg-[#EFE7DA] text-[#966840] flex items-center justify-center font-bold text-sm mb-3">01</div>
+          <h3 class="font-serif-luxury font-bold text-lg text-[#2A1D15]">Solar Sun-Cured</h3>
+          <p class="text-xs text-[#6B5B52] mt-1">Slowly dried under natural sun warmth without heat treatment.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E6DCCF] reveal-on-scroll">
+          <div class="w-8 h-8 rounded-full bg-[#EFE7DA] text-[#966840] flex items-center justify-center font-bold text-sm mb-3">02</div>
+          <h3 class="font-serif-luxury font-bold text-lg text-[#2A1D15]">Single-Origin</h3>
+          <p class="text-xs text-[#6B5B52] mt-1">Direct farm traceability to high-altitude pristine regions.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E6DCCF] reveal-on-scroll">
+          <div class="w-8 h-8 rounded-full bg-[#EFE7DA] text-[#966840] flex items-center justify-center font-bold text-sm mb-3">03</div>
+          <h3 class="font-serif-luxury font-bold text-lg text-[#2A1D15]">Zero Chemicals</h3>
+          <p class="text-xs text-[#6B5B52] mt-1">No sulphur dioxide, mineral oil coating, or artificial gloss.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#FAF7F2] border border-[#E6DCCF] reveal-on-scroll">
+          <div class="w-8 h-8 rounded-full bg-[#EFE7DA] text-[#966840] flex items-center justify-center font-bold text-sm mb-3">04</div>
+          <h3 class="font-serif-luxury font-bold text-lg text-[#2A1D15]">Nutrient Dense</h3>
+          <p class="text-xs text-[#6B5B52] mt-1">Rich in natural essential fatty acids, polyphenols, and fiber.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== RESERVE COLLECTION PRODUCT SHOWCASE ==================== -->
+  <section id="collection" class="py-24 px-6 bg-[#FAF7F2] reveal-on-scroll">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <span class="text-xs font-bold tracking-widest uppercase text-[#966840]">Harvest 2026</span>
+          <h2 class="font-serif-luxury text-4xl sm:text-5xl font-normal text-[#2A1D15] mt-1">The Reserve Collection</h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2">
+          <button class="filter-btn active px-5 py-2 rounded-full text-xs font-semibold bg-[#966840] text-white border border-[#966840] transition" data-filter="all">All Reserve</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-white text-[#2A1D15] border border-[#E6DCCF] hover:border-[#966840] transition" data-filter="nuts">Royal Nuts</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-white text-[#2A1D15] border border-[#E6DCCF] hover:border-[#966840] transition" data-filter="dates">Dates & Figs</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-white text-[#2A1D15] border border-[#E6DCCF] hover:border-[#966840] transition" data-filter="gift">Gift Sets</button>
+        </div>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Product 1: Mamra Almonds -->
+        <div class="product-card luxe-card rounded-2xl overflow-hidden p-4 group transition-all reveal-on-scroll" data-category="nuts">
+          <div class="relative rounded-xl overflow-hidden aspect-square bg-[#F4EFEA]">
+            <img src="assets/almonds.jpg" alt="Mamra Almonds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 gold-badge px-2.5 py-1 rounded-full text-[10px] font-bold">Grade A+ Organic</span>
+          </div>
+          <div class="mt-4 space-y-2">
+            <h3 class="font-serif-luxury font-bold text-xl text-[#2A1D15]">Organic Mamra Almonds</h3>
+            <p class="text-xs text-[#6B5B52]">Raw, unpasteurized almond kernels from high elevation.</p>
+            <div class="pt-2 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-[#8C7769] block">Starting at</span>
+                <span class="text-lg font-bold text-[#966840]">₹2,850</span>
+              </div>
+              <button onclick="addToCart('Organic Mamra Almonds', 2850, 'assets/almonds.jpg')" class="px-4 py-2 rounded-full bg-[#2A1D15] text-white text-xs font-semibold hover:bg-[#966840] transition">
+                + Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Iranian Pistachios -->
+        <div class="product-card luxe-card rounded-2xl overflow-hidden p-4 group transition-all reveal-on-scroll" data-category="nuts">
+          <div class="relative rounded-xl overflow-hidden aspect-square bg-[#F4EFEA]">
+            <img src="assets/pistachios.jpg" alt="Iranian Pistachios" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 gold-badge px-2.5 py-1 rounded-full text-[10px] font-bold">Persian Reserve</span>
+          </div>
+          <div class="mt-4 space-y-2">
+            <h3 class="font-serif-luxury font-bold text-xl text-[#2A1D15]">Wild Iranian Pistachios</h3>
+            <p class="text-xs text-[#6B5B52]">Open-in-shell green pistachios, naturally sun-roasted.</p>
+            <div class="pt-2 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-[#8C7769] block">Starting at</span>
+                <span class="text-lg font-bold text-[#966840]">₹2,450</span>
+              </div>
+              <button onclick="addToCart('Wild Iranian Pistachios', 2450, 'assets/pistachios.jpg')" class="px-4 py-2 rounded-full bg-[#2A1D15] text-white text-xs font-semibold hover:bg-[#966840] transition">
+                + Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Medjool Dates -->
+        <div class="product-card luxe-card rounded-2xl overflow-hidden p-4 group transition-all reveal-on-scroll" data-category="dates">
+          <div class="relative rounded-xl overflow-hidden aspect-square bg-[#F4EFEA]">
+            <img src="assets/dates.jpg" alt="Medjool Dates" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 gold-badge px-2.5 py-1 rounded-full text-[10px] font-bold">Jumbo Royal</span>
+          </div>
+          <div class="mt-4 space-y-2">
+            <h3 class="font-serif-luxury font-bold text-xl text-[#2A1D15]">Organic Medjool Dates</h3>
+            <p class="text-xs text-[#6B5B52]">Soft caramel notes, hand-plucked from sunlit oasis palm groves.</p>
+            <div class="pt-2 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-[#8C7769] block">Starting at</span>
+                <span class="text-lg font-bold text-[#966840]">₹2,150</span>
+              </div>
+              <button onclick="addToCart('Organic Medjool Dates', 2150, 'assets/dates.jpg')" class="px-4 py-2 rounded-full bg-[#2A1D15] text-white text-xs font-semibold hover:bg-[#966840] transition">
+                + Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4: Saj Wooden Gift Box -->
+        <div class="product-card luxe-card rounded-2xl overflow-hidden p-4 group transition-all reveal-on-scroll" data-category="gift">
+          <div class="relative rounded-xl overflow-hidden aspect-square bg-[#F4EFEA]">
+            <img src="assets/gift_box.jpg" alt="Saj Wooden Gift Box" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 gold-badge px-2.5 py-1 rounded-full text-[10px] font-bold">Bespoke Gift</span>
+          </div>
+          <div class="mt-4 space-y-2">
+            <h3 class="font-serif-luxury font-bold text-xl text-[#2A1D15]">Saj Artisanal Gift Box</h3>
+            <p class="text-xs text-[#6B5B52]">Handcrafted light oak chest with 4 customized organic selections.</p>
+            <div class="pt-2 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-[#8C7769] block">Starting at</span>
+                <span class="text-lg font-bold text-[#966840]">₹6,450</span>
+              </div>
+              <button onclick="addToCart('Saj Artisanal Gift Box', 6450, 'assets/gift_box.jpg')" class="px-4 py-2 rounded-full bg-[#2A1D15] text-white text-xs font-semibold hover:bg-[#966840] transition">
+                + Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INTERACTIVE GIFT BOX BUILDER ==================== -->
+  <section id="giftbox" class="py-24 px-6 bg-gradient-to-br from-[#F5ECE1] to-[#FAF7F2] border-t border-[#E6DCCF] reveal-on-scroll">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Builder Controls (Left) -->
+      <div class="lg:col-span-6 space-y-6">
+        <span class="text-xs font-bold tracking-widest uppercase text-[#966840]">Custom Crafting</span>
+        <h2 class="font-serif-luxury text-4xl sm:text-5xl font-normal text-[#2A1D15]">Curate Your Saj Gift Box</h2>
+        <p class="text-sm text-[#6B5B52]">
+          Select 4 of your favorite organic items to fill our signature handcrafted light oak gift chest. Comes with a personalized gold-foil ribbon note.
+        </p>
+
+        <!-- Selection Items -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          
+          <button class="box-selectable bg-white p-3.5 rounded-xl border border-[#E6DCCF] hover:border-[#966840] text-left transition flex items-center justify-between group" data-name="Mamra Almonds" data-price="1150">
+            <div>
+              <p class="font-serif-luxury font-bold text-sm text-[#2A1D15] group-hover:text-[#966840]">Mamra Almonds</p>
+              <p class="text-xs text-[#6B5B52]">High Altitude</p>
+            </div>
+            <span class="text-xs font-bold text-[#966840]">+₹1,150</span>
+          </button>
+
+          <button class="box-selectable bg-white p-3.5 rounded-xl border border-[#E6DCCF] hover:border-[#966840] text-left transition flex items-center justify-between group" data-name="Iranian Pistachios" data-price="1290">
+            <div>
+              <p class="font-serif-luxury font-bold text-sm text-[#2A1D15] group-hover:text-[#966840]">Iranian Pistachios</p>
+              <p class="text-xs text-[#6B5B52]">Open Shell</p>
+            </div>
+            <span class="text-xs font-bold text-[#966840]">+₹1,290</span>
+          </button>
+
+          <button class="box-selectable bg-white p-3.5 rounded-xl border border-[#E6DCCF] hover:border-[#966840] text-left transition flex items-center justify-between group" data-name="Medjool Dates" data-price="990">
+            <div>
+              <p class="font-serif-luxury font-bold text-sm text-[#2A1D15] group-hover:text-[#966840]">Medjool Dates</p>
+              <p class="text-xs text-[#6B5B52]">Jumbo Oasis</p>
+            </div>
+            <span class="text-xs font-bold text-[#966840]">+₹990</span>
+          </button>
+
+          <button class="box-selectable bg-white p-3.5 rounded-xl border border-[#E6DCCF] hover:border-[#966840] text-left transition flex items-center justify-between group" data-name="Kashmiri Walnuts" data-price="1250">
+            <div>
+              <p class="font-serif-luxury font-bold text-sm text-[#2A1D15] group-hover:text-[#966840]">Kashmiri Walnuts</p>
+              <p class="text-xs text-[#6B5B52]">Brain Kernels</p>
+            </div>
+            <span class="text-xs font-bold text-[#966840]">+₹1,250</span>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Live Box Visual (Right) -->
+      <div class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#E6DCCF] shadow-xl">
+        <div class="flex items-center justify-between pb-4 border-b border-[#E6DCCF]">
+          <div>
+            <h3 class="font-serif-luxury font-bold text-2xl text-[#2A1D15]">Artisanal Wooden Chest</h3>
+            <p id="boxCount" class="text-xs text-[#8C7769]">0/4 Selected</p>
+          </div>
+          <span id="boxTotalPrice" class="text-2xl font-bold text-[#966840]">₹1,450</span>
+        </div>
+
+        <!-- 4 Grid Slots -->
+        <div class="grid grid-cols-2 gap-4 my-6">
+          <div class="box-slot"></div>
+          <div class="box-slot"></div>
+          <div class="box-slot"></div>
+          <div class="box-slot"></div>
+        </div>
+
+        <button onclick="addCustomBoxToCart()" class="w-full py-4 rounded-xl bg-[#2A1D15] text-white font-semibold text-sm hover:bg-[#966840] transition shadow-lg">
+          Add Custom Gift Chest to Bag
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PURITY STANDARD & ORIGIN SPECS ==================== -->
+  <section id="purity" class="py-24 px-6 bg-[#FAF7F2] border-t border-[#E6DCCF] reveal-on-scroll">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <span class="text-xs font-bold tracking-widest uppercase text-[#966840]">Uncompromising Quality</span>
+        <h2 class="font-serif-luxury text-4xl sm:text-5xl font-normal text-[#2A1D15]">The Saj Purity Standard</h2>
+        <p class="text-sm text-[#6B5B52] max-w-xl mx-auto">Every batch undergoes strict single-origin verification, solar curing protocols, and laboratory purity testing.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-white p-8 rounded-3xl border border-[#E6DCCF] luxe-card space-y-4 reveal-on-scroll">
+          <div class="w-12 h-12 rounded-2xl bg-[#F5ECE1] flex items-center justify-center text-[#966840]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">Solar Sun-Curing</h3>
+          <p class="text-xs text-[#6B5B52] leading-relaxed">
+            Unlike commercial brands that heat-blast dry fruits in industrial dehydrators, Saj sun-cures all fruits under natural mountain sunlight to preserve delicate essential oils and vitamin profiles.
+          </p>
+          <span class="inline-block text-[11px] font-bold text-[#966840] uppercase tracking-wider">Protocol 01 • Solar Cured</span>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-[#E6DCCF] luxe-card space-y-4 reveal-on-scroll">
+          <div class="w-12 h-12 rounded-2xl bg-[#F5ECE1] flex items-center justify-center text-[#966840]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">Zero Sulphur Guarantee</h3>
+          <p class="text-xs text-[#6B5B52] leading-relaxed">
+            We never bleach our walnuts or spray apricots with sulphur dioxide. Our dry fruits retain their authentic deep earthen hues and natural, rich aromatic profile.
+          </p>
+          <span class="inline-block text-[11px] font-bold text-[#966840] uppercase tracking-wider">Protocol 02 • Pure & Unbleached</span>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-[#E6DCCF] luxe-card space-y-4 reveal-on-scroll">
+          <div class="w-12 h-12 rounded-2xl bg-[#F5ECE1] flex items-center justify-center text-[#966840]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-luxury text-2xl font-bold text-[#2A1D15]">Single-Origin Reserve</h3>
+          <p class="text-xs text-[#6B5B52] leading-relaxed">
+            Directly sourced from high-altitude micro-farms in Kashmir, Iran, and California. Each batch is micro-traced to ensure single-origin authenticity.
+          </p>
+          <span class="inline-block text-[11px] font-bold text-[#966840] uppercase tracking-wider">Protocol 03 • Micro-Traced</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SHOPPING CART DRAWER ==================== -->
+  <div id="cartOverlay" class="fixed inset-0 bg-black/40 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-[#FAF7F2] z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col border-l border-[#E6DCCF]">
+    
+    <!-- Drawer Header -->
+    <div class="p-6 border-b border-[#E6DCCF] flex items-center justify-between">
+      <h3 class="font-serif-luxury font-bold text-2xl text-[#2A1D15]">Your Saj Bag</h3>
+      <button id="closeCartBtn" class="text-[#8C7769] hover:text-[#2A1D15] p-2 text-xl font-bold">✕</button>
+    </div>
+
+    <!-- Items List -->
+    <div id="cartList" class="flex-1 p-6 overflow-y-auto space-y-4">
+      <!-- Dynamic Javascript Cart Content -->
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-6 border-t border-[#E6DCCF] bg-white space-y-4">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-[#6B5B52]">Subtotal</span>
+        <span id="cartSubtotal" class="font-bold text-lg text-[#966840]">₹0</span>
+      </div>
+      <p class="text-[11px] text-[#8C7769]">Complimentary luxury packaging & carbon-neutral shipping.</p>
+      <button onclick="alert('Proceeding to Saj Luxury Checkout...')" class="w-full py-4 rounded-xl bg-[#966840] text-white font-bold text-sm hover:bg-[#2A1D15] transition shadow-lg">
+        Proceed To Secure Checkout
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#2A1D15] text-[#EFE7DA] py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <div class="space-y-3">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-full bg-[#C68B59] flex items-center justify-center text-white font-serif-luxury text-lg font-bold">S</div>
+          <span class="font-serif-luxury text-2xl font-bold text-white tracking-wide">Saj</span>
+        </div>
+        <p class="text-xs text-[#A8988B] leading-relaxed">
+          Nature’s purest adornments. Single-origin organic dry fruits, dates, nuts & superfoods harvested with integrity.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-serif-luxury font-bold text-base text-white mb-3">Organic Harvest</h4>
+        <ul class="space-y-2 text-xs text-[#A8988B]">
+          <li><a href="#" class="hover:text-white transition">Mamra Almonds</a></li>
+          <li><a href="#" class="hover:text-white transition">Iranian Pistachios</a></li>
+          <li><a href="#" class="hover:text-white transition">Medjool Dates</a></li>
+          <li><a href="#" class="hover:text-white transition">Kashmiri Walnuts</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-serif-luxury font-bold text-base text-white mb-3">Our Standards</h4>
+        <ul class="space-y-2 text-xs text-[#A8988B]">
+          <li><a href="#" class="hover:text-white transition">Single-Origin Sourcing</a></li>
+          <li><a href="#" class="hover:text-white transition">Zero Preservative Guarantee</a></li>
+          <li><a href="#" class="hover:text-white transition">Eco-Luxe Packaging</a></li>
+          <li><a href="#" class="hover:text-white transition">Organic Certification</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-serif-luxury font-bold text-base text-white mb-3">Saj Club</h4>
+        <p class="text-xs text-[#A8988B] mb-3">Subscribe for rare harvest release alerts & exclusive tasting notes.</p>
+        <div class="flex">
+          <input type="email" placeholder="Enter your email" class="px-3 py-2 text-xs rounded-l-lg bg-[#3D2C22] text-white placeholder-[#8C7769] border-none focus:outline-none flex-1">
+          <button onclick="showToast('Thank you for subscribing to Saj!')" class="px-4 py-2 bg-[#966840] text-white text-xs font-bold rounded-r-lg hover:bg-[#C68B59] transition">Join</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-[#3D2C22] text-center text-xs text-[#8C7769]">
+      © 2026 Saj Organic Dry Fruits. All Rights Reserved. Pure. Handpicked. Uncompromised.
+    </div>
+  </footer>
+
+  <!-- App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
